@@ -2,7 +2,7 @@ import frappe
 
 
 @frappe.whitelist()
-def get_children(doctype, parent, task=None, project=None, status=None, is_root=False):
+def get_children(doctype, parent, task=None, project=None, status=None, exp_start_date=None, exp_end_date=None, is_root=False):
 
     filters = [["docstatus", "<", "2"]]
 
@@ -19,6 +19,11 @@ def get_children(doctype, parent, task=None, project=None, status=None, is_root=
     
     if status:
         filters.append(["status", "=", status])
+
+    if exp_start_date:
+        filters.append(["exp_start_date", ">=", exp_start_date])
+    if exp_end_date:
+        filters.append(["exp_end_date", "<=", exp_end_date])
 
     tasks = frappe.get_list(
         doctype,

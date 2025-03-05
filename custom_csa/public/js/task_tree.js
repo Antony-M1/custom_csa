@@ -32,6 +32,16 @@ frappe.treeview_settings["Task"] = {
 			fieldtype: "Select",
 			options: "\nOpen\nWorking\nPending Review\nOverdue\nTemplate\nCompleted\nCancelled",
 			label: __("Status"),
+        },
+		{
+            fieldname: "exp_start_date",
+			fieldtype: "Date",
+			label: __("Expected Start Date"),
+        },
+		{
+            fieldname: "exp_end_date",
+			fieldtype: "Date",
+			label: __("Expected End Date"),
         }
 	],
 	breadcrumb: "Projects",
